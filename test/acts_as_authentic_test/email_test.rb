@@ -161,7 +161,7 @@ module ActsAsAuthenticTest
       default = {
         case_sensitive: false,
         scope: Employee.validations_scope,
-        if: "#{Employee.email_field}_changed?".to_sym
+        if: "will_save_change_to_#{Employee.email_field}?".to_sym
       }
       assert_equal default, Employee.validates_uniqueness_of_email_field_options
 

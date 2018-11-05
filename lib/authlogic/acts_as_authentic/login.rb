@@ -136,7 +136,7 @@ module Authlogic
         #         {
         #           :case_sensitive => false,
         #           :scope => validations_scope,
-        #           :if => "#{login_field}_changed?".to_sym
+        #           :if => "will_save_change_to_#{login_field}?".to_sym
         #         }
         #
         # * <tt>Accepts:</tt> Hash of options accepted by validates_uniqueness_of
@@ -149,7 +149,7 @@ module Authlogic
             value,
             case_sensitive: false,
             scope: validations_scope,
-            if: "#{login_field}_changed?".to_sym
+            if: "will_save_change_to_#{login_field}?".to_sym
           )
         end
         alias_method(
